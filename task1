@@ -1,0 +1,31 @@
+
+import sqlite3
+
+conn = sqlite3.connect('mibasededatos.db')
+def crear_tabla(conn):
+    cursor = conn.cursor()
+    cursor.execute('CREATE TABLE IF NOT EXIST slangpty (id integer primary key, palabra text, significado text)')
+    conn.commit()
+
+def insertar_palabra(conn):
+    cursor = conn.cursor()
+    id = input("Palabra No: ")
+    palabra = input("Inserte palabra slang: ")
+    significado = input("Inserte su significado: ")
+
+    cursor.execute("INSERT INTO slangpty VALUES(" + id + "'.'" + palabra + "'.'" + significado + "')")
+
+def mostrar_palabra(conn):
+    cursor = conn.cursor()
+    cursor.execute ('SELECT palabra FROM slangpty')
+    slangpty = cursor.fetchall()
+
+def contar_palabra(conn):
+    cursor = conn.cursor()
+    cursor.execute('SELECT = FROM slangpty')
+    print(len(cursor.fetchall()))
+
+#if name == 'main':
+ #   print("Bienvenido al diccionario Slang de Panama")
+ #  mostrar_palabra(conn)
+ #  contar_palabra(conn)
